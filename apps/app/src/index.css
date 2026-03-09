@@ -1,0 +1,285 @@
+@import "tailwindcss";
+@import "@ui/styles.css";
+@config "../tailwind.config.js";
+@source "./**/*.{js,ts,jsx,tsx}";
+@source "../../../packages/ui/**/*.{js,ts,jsx,tsx}";
+
+@layer base {
+  button,
+  [role="button"],
+  a[href] {
+    cursor: pointer;
+  }
+
+  button:disabled,
+  [role="button"][aria-disabled="true"] {
+    cursor: not-allowed;
+  }
+}
+
+@layer utilities {
+  .hc-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border)) transparent;
+  }
+
+  .hc-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .hc-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .hc-scrollbar::-webkit-scrollbar-thumb {
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    background-color: hsl(var(--foreground) / 0.18);
+  }
+
+  .hc-scrollbar:hover::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--foreground) / 0.28);
+  }
+
+  .hc-scrollbar-stealth {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+  }
+
+  .hc-scrollbar-stealth::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  .hc-scrollbar-stealth::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .hc-scrollbar-stealth::-webkit-scrollbar-thumb {
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    background-color: transparent;
+    transition: background-color 120ms ease;
+  }
+
+  .hc-scrollbar-stealth:hover {
+    scrollbar-color: hsl(var(--foreground) / 0.22) transparent;
+  }
+
+  .hc-scrollbar-stealth:hover::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--foreground) / 0.22);
+  }
+
+  .hc-lobster-float {
+    animation: hc-lobster-float 4.8s ease-in-out infinite;
+    transform-origin: center;
+  }
+
+  .hc-lobster-eye {
+    animation: hc-lobster-eye 2.2s ease-in-out infinite;
+  }
+
+  .hc-lobster-claw-left {
+    animation: hc-lobster-claw-left 3s ease-in-out infinite;
+    transform-origin: 25% 45%;
+  }
+
+  .hc-lobster-claw-right {
+    animation: hc-lobster-claw-right 3s ease-in-out infinite;
+    transform-origin: 75% 45%;
+  }
+
+  @keyframes hc-lobster-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+
+  @keyframes hc-lobster-eye {
+    0%, 100% { opacity: 1; filter: drop-shadow(0 0 0 rgba(141, 244, 255, 0)); }
+    50% { opacity: 0.7; filter: drop-shadow(0 0 5px rgba(141, 244, 255, 0.7)); }
+  }
+
+  @keyframes hc-lobster-claw-left {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(-5deg); }
+  }
+
+  @keyframes hc-lobster-claw-right {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(5deg); }
+  }
+
+  .hc-loading-sheen {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .hc-loading-sheen::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    transform: translateX(-130%);
+    background: linear-gradient(
+      102deg,
+      transparent 0%,
+      hsl(var(--foreground) / 0.04) 35%,
+      hsl(var(--foreground) / 0.26) 50%,
+      hsl(var(--foreground) / 0.04) 65%,
+      transparent 100%
+    );
+    mix-blend-mode: screen;
+    animation: hc-loading-sheen 1.7s linear infinite;
+  }
+
+  .hc-loading-text {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--muted-foreground) / 0.45) 0%,
+      hsl(var(--foreground) / 0.95) 45%,
+      hsl(var(--muted-foreground) / 0.45) 100%
+    );
+    background-size: 220% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: hc-loading-text 1.4s linear infinite;
+  }
+
+  .hc-chat-markdown {
+    font-size: 14px;
+    line-height: 1.5;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+
+  .hc-chat-markdown :where(p, ul, ol, pre, blockquote, table, hr) {
+    margin: 0;
+  }
+
+  .hc-chat-markdown :where(p + p, p + ul, p + ol, p + pre, p + blockquote, p + table, p + hr) {
+    margin-top: 0.75em;
+  }
+
+  .hc-chat-markdown :where(ul, ol) {
+    padding-left: 1.5em;
+  }
+
+  .hc-chat-markdown :where(ul) {
+    list-style-type: disc;
+  }
+
+  .hc-chat-markdown :where(ol) {
+    list-style-type: decimal;
+  }
+
+  .hc-chat-markdown :where(li + li) {
+    margin-top: 0.25em;
+  }
+
+  .hc-chat-markdown :where(a) {
+    color: hsl(var(--primary));
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .hc-chat-markdown :where(a:hover) {
+    opacity: 0.85;
+  }
+
+  .hc-chat-markdown :where(code) {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    font-size: 0.9em;
+  }
+
+  .hc-chat-markdown :where(:not(pre) > code) {
+    background: hsl(var(--background) / 0.65);
+    border: 1px solid hsl(var(--border) / 0.8);
+    border-radius: 4px;
+    padding: 0.1em 0.38em;
+  }
+
+  .hc-chat-markdown :where(pre) {
+    background: hsl(var(--background) / 0.6);
+    border: 1px solid hsl(var(--border) / 0.9);
+    border-radius: 8px;
+    max-width: 100%;
+    overflow-x: auto;
+    padding: 10px 12px;
+  }
+
+  .hc-chat-markdown :where(pre code) {
+    background: transparent;
+    border: 0;
+    padding: 0;
+  }
+
+  .hc-chat-markdown :where(blockquote) {
+    background: hsl(var(--background) / 0.35);
+    border-left: 3px solid hsl(var(--border));
+    border-radius: 0 8px 8px 0;
+    color: hsl(var(--muted-foreground));
+    margin-left: 0;
+    padding: 8px 12px;
+  }
+
+  .hc-chat-markdown :where(blockquote blockquote) {
+    border-left-color: hsl(var(--border) / 0.75);
+    margin-top: 8px;
+  }
+
+  .hc-chat-markdown :where(hr) {
+    border: 0;
+    border-top: 1px solid hsl(var(--border));
+    margin: 1em 0;
+  }
+
+  .hc-chat-markdown :where(table) {
+    border-collapse: collapse;
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    width: max-content;
+  }
+
+  .hc-chat-markdown :where(th, td) {
+    border: 1px solid hsl(var(--border));
+    padding: 6px 10px;
+    text-align: left;
+    vertical-align: top;
+    white-space: nowrap;
+  }
+
+  .hc-chat-markdown :where(th) {
+    background: hsl(var(--muted) / 0.45);
+    font-weight: 600;
+  }
+
+  .hc-chat-markdown[dir="rtl"] {
+    text-align: right;
+  }
+
+  .hc-chat-markdown[dir="rtl"] :where(ul, ol) {
+    padding-left: 0;
+    padding-right: 1.5em;
+  }
+
+  .hc-chat-markdown[dir="rtl"] :where(blockquote) {
+    border-left: 0;
+    border-radius: 8px 0 0 8px;
+    border-right: 3px solid hsl(var(--border));
+  }
+
+  @keyframes hc-loading-sheen {
+    100% { transform: translateX(130%); }
+  }
+
+  @keyframes hc-loading-text {
+    0% { background-position: 180% 0; }
+    100% { background-position: -40% 0; }
+  }
+}

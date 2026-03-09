@@ -1,0 +1,22 @@
+{
+  "name": "holycrab-desktop-app",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "overrides": {
+    "pixi.js": "6.5.10",
+    "pixi-live2d-display": "0.4.0",
+    "@pixi/*": "6.5.10"
+  },
+  "scripts": {
+    "dev:app": "npm --workspace apps/app run dev",
+    "build:app": "npm --workspace apps/app run build",
+    "lint:app": "npm --workspace apps/app run lint",
+    "typecheck:app": "npm --workspace apps/app run typecheck",
+    "build:daemon": "cargo build --manifest-path daemon/src-tauri/Cargo.toml",
+    "build:software-center": "cargo build --manifest-path software-center-server/Cargo.toml",
+    "ops:release": "./ops/release-cli.sh"
+  }
+}

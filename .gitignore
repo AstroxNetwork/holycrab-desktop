@@ -1,0 +1,57 @@
+# Cargo
+/target/
+**/target/
+
+# Tauri
+**/dist/
+**/node_modules/
+
+# Created by cargo new (nested repo), kept for safety
+**/_git/
+
+# Logs
+*.log
+.logs/
+
+# Python
+**/__pycache__/
+*.pyc
+
+# Local secrets / env
+!.env.example
+
+# Local git worktrees
+.worktrees/
+
+# macOS
+.DS_Store
+
+# Local Codex artifacts
+.codex/
+
+# Local build secrets (never commit)
+.local/
+
+# Local staged updater artifacts (served via SOFTWARE_CENTER_SOFT_DIR)
+software-center-server/data/soft/**/updater/*.tar.gz
+software-center-server/data/soft/**/updater/*.tar.gz.sig
+
+# Local scratch/artifacts
+tmp/
+.tmp/
+
+# Next.js
+.next/
+out/
+
+# Vercel
+.vercel/
+/.idea/
+.env
+.env.backup
+
+/releases
+
+/offline/
+-
+/daemon/

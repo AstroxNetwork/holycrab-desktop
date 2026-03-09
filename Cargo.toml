@@ -1,0 +1,11 @@
+[workspace]
+resolver = "2"
+members = [
+  "shared/protocol",
+  "software-center-server",
+  "daemon/src-tauri"
+]
+
+[workspace.package]
+edition = "2021"
+license = "MIT"
