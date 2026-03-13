@@ -1,0 +1,36 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "HolyCrab",
+  "version": "0.1.0",
+  "identifier": "com.astroxnetwork.holycrab",
+  "build": {
+    "beforeDevCommand": "pnpm --filter app dev",
+    "beforeBuildCommand": "pnpm --filter app build",
+    "devUrl": "http://localhost:5174",
+    "frontendDist": "../apps/app/dist"
+  },
+  "app": {
+    "windows": [
+      {
+        "title": "HolyCrab",
+        "width": 1280,
+        "height": 820,
+        "resizable": true,
+        "fullscreen": false
+      }
+    ],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "createUpdaterArtifacts": true,
+    "icon": [
+      "src-tauri/icons/icon.png",
+      "src-tauri/icons/icon.icns",
+      "src-tauri/icons/icon.ico"
+    ]
+  }
+}

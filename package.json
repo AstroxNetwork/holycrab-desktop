@@ -15,8 +15,6 @@
     "build:app": "npm --workspace apps/app run build",
     "lint:app": "npm --workspace apps/app run lint",
     "typecheck:app": "npm --workspace apps/app run typecheck",
-    "build:daemon": "cargo build --manifest-path daemon/src-tauri/Cargo.toml",
-    "build:software-center": "cargo build --manifest-path software-center-server/Cargo.toml",
-    "ops:release": "./ops/release-cli.sh"
+    "build:tauri": "cargo build --manifest-path tauri/src-tauri/Cargo.toml"
   }
 }
